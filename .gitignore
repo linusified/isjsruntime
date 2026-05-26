@@ -1,4 +1,2 @@
-.vscode/*
-tests-git/*
 *.lockb
-*.lock"
+*.lock

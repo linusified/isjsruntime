@@ -1,0 +1,5 @@
+scripts/
+deno.json
+deno.lock
+index.ts
+.github/

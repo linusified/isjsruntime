@@ -1,0 +1,22 @@
+{
+  "name": "@linusified/isjsruntime",
+  "version": "0.4.0",
+  "description": "Detects JavaScript engine and runtime easily",
+  "author": "linusified",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "runtime",
+    "deno",
+    "node",
+    "bun",
+    "browser",
+    "detect"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linusified/isjsruntime.git"
+  }
+}
