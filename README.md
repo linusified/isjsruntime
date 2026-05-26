@@ -25,7 +25,7 @@ The project is licensed under MIT, see [LICENSE](./LICENSE) for details
 
 ## Introduction
 
-Contains 2 non-async function (which on fails, return `undefined`), no params needed!
+Contains 4 non-async function (which on fails, return `undefined`), no params needed!
 
 - `runtime()` for detecting a javascript runtime. Has a sub-function (not a `class`)
   - `runtime.isEdge()` to detect if the JS runtime was in edge/serverless
