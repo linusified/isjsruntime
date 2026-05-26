@@ -1,0 +1,27 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "version": "0.4.0",
+  "name": "@linusified/isjsruntime",
+  "exports": "./index.ts",
+  "license": "MIT",
+  "tasks": {
+    "isitclean": "deno fmt --check; deno lint; deno check index.ts",
+    "setup": "deno run scripts/empty_publish_npm.ts"
+  },
+  "publish": {
+    "exclude": [
+      "scripts/",
+      ".github/"
+    ]
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.ns",
+      "dom"
+    ]
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.42.3",
+    "esbuild": "npm:esbuild@^0.28.0"
+  }
+}

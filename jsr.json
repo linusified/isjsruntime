@@ -1,7 +1,0 @@
-{
-  "$schema": "https://jsr.io/schema/config-file.v1.json", 
-  "version": "0.3.0",
-  "name": "@cupglassdev/isjsruntime",
-  "exports":"./mod.ts",
-  "publish": {"exclude": [".vscode/*", "tests-git/*", "*.lockb", "*.lock"]}
-}
