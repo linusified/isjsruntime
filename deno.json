@@ -11,7 +11,9 @@
   "publish": {
     "exclude": [
       "scripts/",
-      ".github/"
+      ".github/",
+      "index.d.ts",
+      "index.js"
     ]
   },
   "compilerOptions": {
