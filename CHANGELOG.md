@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.0
+
+Yey! A new version since 2+ years sitting on the shelf for nothing
+
+- Native NPM support, no need to install from JSR first
+- More detailed JSDoc for variables and types
+- Add support to detect serverless Javascript runtimes! (Including Cloudflare, Vercel, and more)
+- Renamed some of the function names to be more clear (from `env()` to `runtime()`)
+- Learned to clear those messy commits :)
+
+Thanks for you guys that supported me until now!
+
+
 ## v0.4.0-rc.1
 
 Prerelease version, first time making a hybrid javascript package
