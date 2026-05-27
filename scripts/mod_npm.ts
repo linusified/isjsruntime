@@ -21,6 +21,9 @@ export async function build(overwriteVersion:string|undefined=undefined) {
     package: packageJson,
     typeCheck: false,
     test: false,
+      filterDiagnostic(_diagnostic) {
+    return false; // skip all lint checks on generated files
+  },
   });
 
   Deno.copyFileSync(`${tmpDir}/esm/index.js`, "./index.js");
