@@ -8,7 +8,7 @@ export async function build(overwriteVersion:string|undefined=undefined) {
   let packageJson = JSON.parse(Deno.readTextFileSync("./package.json"))
   if (typeof overwriteVersion !== "undefined") {
     packageJson = {...packageJson, version:overwriteVersion}
-    await Deno.writeTextFile("./package.json", packageJson)
+    await Deno.writeTextFile("./package.json", JSON.stringify(packageJson))
   }
   await dntBuild({
     entryPoints: ["./index.ts"],
