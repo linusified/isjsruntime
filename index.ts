@@ -37,7 +37,7 @@ export const runtimeStandardList = [
  * Javascript standard runtime list, as a Typescript type
  * @since 0.4.0
  */
-export type RuntimeStandardType = typeof runtimeEdgeList[number];
+export type RuntimeStandardType = typeof runtimeStandardList[number];
 
 /**
  * All Javascript runtime list
@@ -49,9 +49,7 @@ export const runtimeList = [...runtimeStandardList, ...runtimeEdgeList] as const
  * All Javascript runtime list, as a Typescript type
  * @since 0.4.0
  */
-export type RuntimeType =
-  | RuntimeStandardType
-  | RuntimeEdgeType;
+export type RuntimeType = RuntimeStandardType & RuntimeEdgeType;
 
 /**
  * All known Javascript engine list
@@ -75,8 +73,7 @@ function isABrowser(): boolean {
     if (typeof process !== "undefined" && process.versions.node !== null) {
       return false;
     }
-    // deno-lint-ignore no-empty
-  } catch (_e) {}
+  } catch (_e) { /* intentionally empty */ }
   return true;
 }
 function g() {
@@ -110,7 +107,7 @@ type FnRuntime = {
    * Detect the Javascript runtime
    * @since 0.4.0
    */
-  (): RuntimeType;
+  (): RuntimeType|undefined;
   /**
    * Detect if the Javascript runtime was in edge/serverless
    * @since 0.4.0
@@ -134,7 +131,11 @@ export const runtime: FnRuntime = (() => {
     if (typeof root === "undefined") {
       return false;
     }
-    return root.name === "nodejs";
+    try {
+      //@ts-ignore: only works for old nodejs rt
+      return root.name === "nodejs";
+    } catch(_) { /*Intentionally empty*/ }
+    return false
   }
   // eslint-disable-next-line no-var
   if (
@@ -166,8 +167,7 @@ export const runtime: FnRuntime = (() => {
     case "node": {
       return "node";
     }
-    // deno-lint-ignore no-empty
-    default: {}
+    default: { /* intentionally empty */ }
   }
   if (p.includes("bun")) {
     return "bun";
@@ -178,6 +178,7 @@ export const runtime: FnRuntime = (() => {
   ) {
     return "jx";
   }
+  return undefined;
 }) as FnRuntime;
 
 /**
@@ -185,7 +186,9 @@ export const runtime: FnRuntime = (() => {
  * @since 0.4.0
  */
 runtime.isEdge = function (): boolean {
-  return runtimeEdgeList.includes(runtime());
+  const rt = runtime()
+  if (typeof rt === "undefined") { return false }
+  return runtimeEdgeList.includes(rt);
 };
 
 /**
@@ -195,7 +198,9 @@ runtime.isEdge = function (): boolean {
  * @since 0.4.0
  */
 runtime.isStandard = function (): boolean {
-  return runtimeStandardList.includes(runtime());
+  const rt = runtime()
+  if (typeof rt === "undefined") { return false }
+  return runtimeStandardList.includes(rt);
 };
 
 /**
