@@ -32,7 +32,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "chore: update changelog in README for ${TAG}" || echo "No changes to commit"
-          git push
+          git push origin HEAD:main
           if [[ "$TAG" == *"-alpha"* || "$TAG" == *"-beta"* || "$TAG" == *"-rc"* ]]; then
             gh release create "$TAG" --prerelease --notes "$NOTES" --title "$TAG"
           else
