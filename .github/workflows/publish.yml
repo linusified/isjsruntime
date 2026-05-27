@@ -46,8 +46,8 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           echo "$(jq --arg v "$VERSION" '.version = $v' deno.json)" > deno.json
-      - run: deno publish
-
+      - run: deno publish --allow-dirty
+ 
   publish-npm:
     name: Publish to npm
     runs-on: ubuntu-latest
