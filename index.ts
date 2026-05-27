@@ -205,7 +205,6 @@ runtime.isStandard = function (): boolean {
 
 /**
  * Detect the Javascript engine. Such as ```v8```, and more
- * @since 0.1.3
  */
 export function engine(): EngineType | undefined {
   if (runtime() === "deno" && Object.keys(proc().version).includes("v8")) {
