@@ -15,12 +15,6 @@ The project is licensed under MIT, see [LICENSE](./LICENSE) for details
 
 # Isjsruntime
 
-<details>
-  <summary>See details about the update</summary>
-
-  <!--CHANGELOG_MARKER-->
-
-</details>
 <br>
 
 ## Introduction
