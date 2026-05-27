@@ -52,6 +52,7 @@ jobs:
     name: Publish to npm
     runs-on: ubuntu-latest
     needs: release
+    environment: NPM_TOKEN 
     permissions:
       contents: read
       id-token: write
@@ -63,7 +64,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-          registry-url: "https://registry.npmjs.org"
       - name: Sync version from tag into package.json
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
